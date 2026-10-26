@@ -1,66 +1,65 @@
 # Seitenspezifikation: Creative Tech Lab
 
-Variante: D (Portfolio, Bewerbung) · Seitentyp: Startseite · Datum: 26.10.2026
+Variante: D (Portfolio, Bewerbung) · Seitentyp: Startseite · Stand: 26.10.2026, Fassung 2 "Labor bei Nacht"
 
 ## Ziel
 - Ziel der Seite: Ausbilder und Recruiter verstehen in 10 Sekunden Rolle, Schwerpunkt und Verfügbarkeit und öffnen ein Projekt.
 - Primärer CTA: „Kontakt auf LinkedIn“
 - Sekundärweg: „Lebenslauf (PDF)“
 - Navigation: ja (Startseite)
-- Länge: lang, weil ein Praktikum über sechs Monate für den Betrieb eine echte Entscheidung ist und Leser Belege sehen wollen (regelwerk.md §2.3). Desktop rund 11 Bildschirmhöhen, Handy rund 20.
+- Länge: lang, weil ein Praktikum über sechs Monate für den Betrieb eine echte Entscheidung ist und Leser Belege sehen wollen (regelwerk.md §2.3). Desktop rund 12,5 Bildschirmhöhen, Handy rund 23,5.
+
+## Idee der Fassung 2
+Davids Wunsch: mehr Wirkung, Befehle über jedem Feld, Ranke und Würfel aus der Wiki-APP, Farben wie im GitHub-Profilbild, damit alles eins wird.
+
+- **Befehle:** Jeder Abschnitt beginnt mit einer Terminalzeile, die sich tippt, sobald die Ranke dort ankommt: `whoami`, `cat motto.txt`, `cat praktikum.conf`, `cat versuche/*/protokoll.md`, `apt list --installed`, `man david`, `git log --graph`, `sudo apt install praktikant`, `exit`. Die Inhalte darunter sind passend gestaltet (Konfigurationsdatei, Paketliste, Manpage, Git-Graph, apt-Ausgabe).
+- **Würfel:** Auf der Bühne um das Wappen schwebt ein Würfel je Versuch, in der Farbe des Projekts und mit seinem Zeichen aus dem Wappen (Blatt, Feuer und Schwert, Schallwellen, Funken, Prompt). Ein Klick führt zum Protokoll, `./wuerfeln.sh` lässt alle rollen und empfiehlt einen Versuch.
+- **Ranke:** wächst beim Scrollen am linken Rand mit, läuft beim Hochscrollen zurück, an jedem Befehl blüht eine Blüte auf. Zwei Bienen: eine an der Spitze, eine an der zuletzt geöffneten Blüte. Im Werdegang wird die Ranke zum Git-Graph, mit den Wurzeln in der Gärtnerei.
 
 ## Abschnittsfolge
 
-| # | Abschnitt | Inhalt | Beantwortet | Regel |
+| # | Abschnitt | Befehl | Beantwortet | Regel |
 |---|---|---|---|---|
-| 1 | Einstieg | Satz aus dem Lebenslauf als Überschrift, Rolle, Verfügbarkeit, LinkedIn, PDF, Beleg mit zwei Live-Apps, Emblem | Wer ist das, was sucht er? | §2.1, zielgruppen D |
-| 2 | Steckbrief Praktikum | Zeitraum, Ort, Kosten für den Betrieb, Abschlussprojekt | Passt das zu uns, was kostet es? | §2.3 (keine Frage offen) |
-| 3 | Versuchsprotokolle | 5 Projekte mit Frage, Aufbau, Ergebnis, Rolle, Erkenntnis und Beleg (Screenshot, Code, Hörprobe) | Kann er das wirklich? | zielgruppen D (3 bis 6 Projekte) |
-| 4 | Werkzeugkasten | Inventarliste: Technik mit Einsatzort | Welche Technik, wo belegt? | §2.2 (Zahlen und Belege statt Adjektive) |
-| 5 | Über mich | Gärtnerei, Selbststudium, Arbeitsweise mit KI, Workshop | Wie arbeitet er, passt er ins Team? | §2.4 (Foto der Person) |
-| 6 | Werdegang | Vier Stationen, Rest im PDF | Lückenlos? | zielgruppen D |
-| 7 | Kontakt | LinkedIn, GitHub | Wie geht es weiter? | §2.3 |
-
-Gestrichen: Filter über den Projekten (bei fünf Projekten unnötig, Prüffrage 2), Kartenraster „Was ich ins Team bringe“ (steht schon im Text, Slop-Muster 4).
-
-## Botschaft
-- Überschrift: „Ich baue lieber ein Skript, als dieselbe Aufgabe zweimal zu erledigen.“ (aus Davids Lebenslauf)
-- Unterzeile: Umschulung FIAE, Abschluss 08/2027, Praktikum ab 11/2026 im Raum Hamburg, Lern-Apps und Linux-Automatisierung
-- Beleg: zwei Live-Apps mit Link, eine testet und veröffentlicht sich jede Nacht selbst
-- Konkurrenz-Test: bestanden, Gärtnerei, Ranke, Souls-like und Jarvis kann niemand sonst schreiben
+| 1 | Einstieg mit Würfel-Bühne | `whoami`, `cat motto.txt` | Wer ist das, was sucht er? | §2.1, zielgruppen D |
+| 2 | Steckbrief Praktikum | `cat praktikum.conf` | Passt das zu uns, was kostet es? | §2.3 |
+| 3 | Versuchsprotokolle (5) | `cat versuche/*/protokoll.md` | Kann er das wirklich? | zielgruppen D |
+| 4 | Werkzeugkasten | `apt list --installed` | Welche Technik, wo belegt? | §2.2 |
+| 5 | Über mich | `man david` | Wie arbeitet er? | §2.4 |
+| 6 | Werdegang | `git log --graph` | Lückenlos? | zielgruppen D |
+| 7 | Kontakt | `sudo apt install praktikant` | Wie geht es weiter? | §2.3 |
 
 ## Gestaltungsentscheidungen
-- Schrift: Systemschriften, Monospace für Etiketten und Protokollköpfe. Schnell, keine externen Anfragen, passt zum Terminal im Emblem.
-- Akzentfarbe: Rankengrün `#1b6e36` (hell) und `#80d494` (dunkel), aus dem Emblem. Magenta `#a1267d` nur für den Prompt `>_`.
-- Hintergrund: kariertes Laborpapier `#f6f7f3`, Nachtschicht tiefes Violett `#17132a` aus dem Emblem.
-- Bildsprache: echte Screenshots der Live-Apps, echte Code-Auszüge, echte Hörprobe von Jarvis, Porträt aus dem Lebenslauf.
-- Slop-Zählung (regelwerk.md §3): 1. Kleine Etiketten über den Abschnittsüberschriften (Muster 5), bewusst als Laborbuch-Beschriftung und ohne Nummerierung. Sonst keins: kein Verlauf in Schrift, keine Glaseffekte, keine Emojis, kein Kartenraster mit Icons.
-- Bewegung: einmal tippt der Prompt `whoami` (von David gewählt), Knöpfe reagieren, die Balken der Hörprobe laufen mit. Bei reduzierter Bewegung steht alles still.
+- Schrift: Ubuntu und Ubuntu Mono, lokal als WOFF2 (je zwei Schnitte, zusammen 118 KB, Lizenz in `docs/fonts/LICENSE-UFL.txt`). Begründung: Ubuntu ist Davids System und Thema eines Versuchs, die Mono-Schrift trägt die Terminalzeilen.
+- Farben aus dem Profilbild gemessen: Grund `#1a1033` mit Türkis oben rechts und Violett unten links, Rankengrün `#83d97d`, Prompt-Magenta `#ff6bf0`, Orange `#ffa35c`, Gelb `#ffd447`, Bildschirm-Beige `#f2d3ae`. Tagschicht hell zum Umschalten.
+- Kontraste: Text auf Grund 16:1, Zweitext 10:1, Grün 10:1, Magenta 7,4:1; Tagschicht alle über 5,5:1.
+- Bilder: echte Screenshots im beigen Bildschirmrahmen aus dem Wappen, Code-Auszüge und Hörprobe als Terminal.
+- Slop-Zählung (regelwerk.md §3): 2, beide bewusst. Muster 1 (dunkler violett-türkiser Grund mit Leuchten): das ist Davids Profilbild, also Marke statt Standard. Muster 5 (Zeile über jeder Überschrift): die Befehle tragen Bedeutung und passen zum Inhalt darunter.
+- Bewegung: deutlich mehr als in Fassung 1, auf Davids Wunsch. Bei „Bewegung reduzieren“ steht alles: Ranke ausgewachsen, Befehle fertig, Würfel ruhig. Alle Inhalte stehen im HTML, ohne JavaScript ist alles lesbar.
 
 ## Technik
 - Formular: keins, Kontakt über LinkedIn
 - Externe Dienste: keine
 - Schema.org: `Person`
 - BFSG: nein (private Präsentationsseite)
-- Messung: keine; Rückfrage im Gespräch, woher der Kontakt kam
+- Messung: keine
 
-## Prüfbericht (Kurzform für eigene Bauten), 26.10.2026
+## Prüfbericht (Kurzform für eigene Bauten), Fassung 2
 
 Zugriffsstufe 2+ (Browser, Shell, puppeteer auf dem lokalen Rechner)
 
 | Punkt | Ergebnis |
 |---|---|
-| C1 Erster Eindruck | ✅ Rolle, Schwerpunkt, Verfügbarkeit und beide Knöpfe im ersten Bildschirm, auch am Handy (390 × 844) |
-| C2 Botschaft | ✅ eigene Überschrift, konkrete Zahlen (172 Artikel, 1134 Karten, 78 Prüfungen) |
+| C1 Erster Eindruck | ✅ Rolle, Verfügbarkeit, Motto und LinkedIn im ersten Bildschirm am Desktop und am Handy |
+| C2 Botschaft | ✅ eigene Überschrift, konkrete Zahlen |
 | C3 Belege | ✅ Live-Links, Screenshots, Code, Hörprobe, Foto |
-| C4 Ablenkung | ✅ ein primärer CTA, kein Pop-up, keine Show-Animation |
-| C5 Offene Fragen | ✅ Zeitraum, Ort, Kosten, Abschlussprojekt im Steckbrief |
-| C6 KI-Muster | ✅ 1 von 7, begründet |
-| C7 Gerüst | ✅ ruhig, typischer Aufbau |
-| C8 Mobil | ✅ LCP 0,6 s am Handy und 0,7 s am Desktop (Labormessung, ein Durchlauf, Slow 4G und 4-fach gedrosselte CPU, lokaler Server), CLS 0 |
-| C9 Lesbarkeit | ✅ Zeilen bis 62 Zeichen, Kontrast Text 14:1, Grün auf Papier über 4,5:1 |
-| C10 Auffindbarkeit | ✅ Titel, Beschreibung, canonical, JSON-LD, Sitemap; kein SEO-Fokus (Variante D) |
+| C4 Ablenkung | ⚠️ mehr Bewegung als Regelwerk §2.6 empfiehlt, bewusst gewählt; ein primärer CTA, kein Pop-up |
+| C5 Offene Fragen | ✅ Zeitraum, Ort, Kosten, Abschlussprojekt |
+| C6 KI-Muster | ✅ 2 von 7, begründet |
+| C7 Gerüst | ✅ Abschnitte konventionell, Wirkung über Bühne, Ranke und Befehle |
+| C8 Mobil | ✅ LCP 1,2 s Desktop und Handy (Labormessung, ein Durchlauf, Slow 4G, 4-fach gedrosselte CPU), CLS 0,002 |
+| C9 Lesbarkeit | ✅ Kontraste siehe oben, Fließtext 17 px |
+| C10 Auffindbarkeit | ✅ Titel, Beschreibung, canonical, JSON-LD, Sitemap |
 | C11 Messung | ➖ bewusst keine |
-| C12 Pflicht und Technik | ⚠️ kein Impressum (private Bewerbungsseite, Entscheidung bei David, keine Rechtsberatung); Datenschutzhinweis vorhanden; keine Cookies, keine fremden Server |
+| C12 Pflicht und Technik | ⚠️ kein Impressum (Davids Entscheidung, keine Rechtsberatung); Datenschutzhinweis; keine Cookies, keine fremden Server |
 
-Schnellcheck: 1 Fehler (kein Impressum, siehe C12), Hinweise „Emblem ohne lazy“ (ist das Hero-Bild, Fehlalarm) und „kein tel:-Link“ (nur Variante A).
+Schnellcheck: 1 Fehler (kein Impressum, siehe C12), Hinweise „Emblem ohne lazy“ (Hero-Bild, Fehlalarm) und „kein tel:-Link“ (nur Variante A).

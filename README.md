@@ -1,6 +1,6 @@
 # Creative Tech Lab
 
-Mein Portfolio als Laborbuch: Projekte stehen als Versuchsprotokolle auf kariertem Papier, mit Frage, Aufbau, Ergebnis, meiner Rolle und dem, was ich dabei gelernt habe.
+Mein Portfolio als Labor bei Nacht, in den Farben meines Profilbilds: Jeder Abschnitt beginnt mit einem Befehl, der sich tippt, sobald die Ranke dort ankommt. Um das Wappen schwebt ein Würfel je Versuch, und die Projekte stehen als Versuchsprotokolle mit Frage, Aufbau, Ergebnis, meiner Rolle und dem, was ich dabei gelernt habe.
 
 ▶️ **Live:** [itdavid04.github.io/Creative_Tech_Lab](https://itdavid04.github.io/Creative_Tech_Lab/)
 
@@ -8,23 +8,23 @@ Mein Portfolio als Laborbuch: Projekte stehen als Versuchsprotokolle auf kariert
 
 | Abschnitt | Inhalt |
 |---|---|
-| Einstieg | Wer ich bin, was ich suche (Praktikum ab 11/2026), Kontakt und Lebenslauf |
+| Einstieg | `whoami`: wer ich bin, was ich suche (Praktikum ab 11/2026), Kontakt und Lebenslauf, daneben die Würfel-Bühne |
 | Versuchsprotokolle | Wiki-APP, Prüfungsprügler, Jarvis, Claude Skills, Ubuntu Autoinstall, mit echten Screenshots, Code-Auszügen und einer Hörprobe von Jarvis |
 | Werkzeugkasten | Jede Technik mit dem Projekt, in dem ich sie eingesetzt habe |
 | Über mich und Werdegang | Vom Gewächshaus ins Labor |
 
-Tagschicht und Nachtschicht folgen der Systemeinstellung und lassen sich umschalten. Die Seite lädt nichts von fremden Servern, setzt keine Cookies und zählt keine Besucher.
+Nachtschicht ist der Standard, die Tagschicht lässt sich umschalten. Bei „Bewegung reduzieren“ steht alles still. Die Seite lädt nichts von fremden Servern, setzt keine Cookies und zählt keine Besucher.
 
 ## Aufbau
 
 | Ordner | Inhalt |
 |---|---|
-| `docs/` | Die fertige Seite für GitHub Pages: `index.html`, `styles.css`, `lab.js`, `datenschutz.html`, Bilder, Hörprobe, `lebenslauf.pdf` |
+| `docs/` | Die fertige Seite für GitHub Pages: `index.html`, `styles.css`, `lab.js` (Befehle, Würfel, Ranke, Bienen, Hörprobe), `datenschutz.html`, Schriften, Bilder, Hörprobe, `lebenslauf.pdf` |
 | `projekt/lebenslauf/` | Quelle der Web-Fassung des Lebenslaufs (ohne Straße, Telefon, E-Mail und Geburtsdatum) |
 | `projekt/Spezifikation.md` | Ziel, Abschnitte, Gestaltungsentscheidungen und Prüfbericht |
 | `tools/lebenslauf-pdf.mjs` | Baut `docs/lebenslauf.pdf` mit Chrome |
 
-Kein Framework, kein Build-Schritt: HTML, CSS und ein kleines Skript für Umschalter, Prompt und Hörprobe. Ohne JavaScript ist trotzdem alles lesbar.
+Kein Framework, kein Build-Schritt: HTML, CSS und ein Skript ohne Bibliotheken. Die Würfel sind reines CSS-3D, die Ranke ein SVG, das beim Laden aus den Positionen der Befehle entsteht. Ohne JavaScript ist trotzdem alles lesbar. Schrift: Ubuntu und Ubuntu Mono, lokal eingebunden.
 
 ## Ansehen und ändern
 
