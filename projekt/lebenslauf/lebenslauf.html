@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Lebenslauf David Hartmann</title>
+<!-- Web-Fassung des Lebenslaufs vom 06.10.2026: gleicher Text, ohne Straße, Telefon, E-Mail und Geburtsdatum.
+     Wird mit tools/lebenslauf-pdf.mjs zu docs/lebenslauf.pdf. -->
+<style>
+  @page { size: A4; margin: 16mm 17mm 15mm; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "DejaVu Sans", "Noto Sans", Arial, sans-serif; font-size: 9.6pt; line-height: 1.42; color: #1c2533; }
+  .kopf { display: flex; justify-content: space-between; gap: 8mm; align-items: flex-start; }
+  h1 { font-size: 22pt; color: #1b6e36; margin: 0 0 1mm; letter-spacing: -0.01em; }
+  .rolle { font-size: 11pt; color: #4a5567; margin: 0 0 4mm; }
+  .daten { margin: 0; font-size: 9pt; color: #1c2533; }
+  .daten a { color: #1b6e36; text-decoration: none; }
+  .foto { width: 31mm; height: 39mm; object-fit: cover; flex: none; }
+  h2 { font-size: 10pt; letter-spacing: 0.12em; text-transform: uppercase; color: #1b6e36; margin: 5.5mm 0 2mm; padding-bottom: 1mm; border-bottom: 1.4pt solid #1b6e36; }
+  p { margin: 0 0 1.6mm; }
+  ul { margin: 0.6mm 0 2mm; padding-left: 4.5mm; }
+  li { margin: 0 0 0.7mm; }
+  .zeile { display: flex; justify-content: space-between; gap: 5mm; font-weight: 700; margin-top: 2mm; }
+  .zeile span:last-child { font-weight: 400; white-space: nowrap; color: #4a5567; }
+  .zeile a { font-weight: 400; color: #1b6e36; text-decoration: none; }
+  .ort { color: #4a5567; margin: 0 0 0.5mm; }
+  b { font-weight: 700; }
+  section { break-inside: auto; }
+  .block { break-inside: avoid; }
+</style>
+</head>
+<body>
+  <div class="kopf">
+    <div>
+      <h1>David Hartmann</h1>
+      <p class="rolle">Umschüler zum Fachinformatiker für Anwendungsentwicklung (IHK)<br>Python, Automatisierung &amp; Linux</p>
+      <p class="daten">Boizenburg/Elbe · Führerschein Klasse B<br>
+        GitHub: <a href="https://github.com/ITDavid04">github.com/ITDavid04</a> · LinkedIn: <a href="https://www.linkedin.com/in/david-hartmann-774a75411/">linkedin.com/in/david-hartmann-774a75411</a><br>
+        Portfolio: <a href="https://itdavid04.github.io/Creative_Tech_Lab/">itdavid04.github.io/Creative_Tech_Lab</a></p>
+    </div>
+    <img class="foto" src="../../docs/img/portrait.webp" alt="Porträt David Hartmann">
+  </div>
+
+  <section>
+    <h2>Kurzprofil</h2>
+    <p>Ich baue lieber ein Skript, als dieselbe Aufgabe zweimal von Hand zu erledigen. In der Umschulung habe ich eine Python-Anwendung mit sauber getrennter Schichtenarchitektur und SQLite entwickelt, eine vollautomatische Ubuntu-Bereitstellung gebaut und dieses Wissen in einem zweitägigen Workshop an IT-Auszubildende weitergegeben.</p>
+    <p>Aus fast 20 Jahren Gartenbau bringe ich Verlässlichkeit, Ruhe in Stoßzeiten und den Anspruch mit, dass Dinge am Ende laufen. Im Praktikum möchte ich Anwendungen weiterentwickeln, Abläufe automatisieren und ein IHK-Abschlussprojekt mit echtem Nutzen für Ihr Team umsetzen.</p>
+  </section>
+
+  <section class="block">
+    <h2>Eckdaten Praktikum</h2>
+    <ul>
+      <li><b>Zeitraum:</b> ab 11/2026, 6 Monate Vollzeit (Praxisphase der Umschulung)</li>
+      <li><b>Abschlussprojekt:</b> betriebliche Projektarbeit für die IHK-Abschlussprüfung (FIAE, max. 80 Std.), gern zu einem echten Problem aus Ihrem Team</li>
+      <li><b>Kosten:</b> Finanzierung über Agentur für Arbeit bzw. Bildungsträger, Versicherung über den Bildungsträger. <b>Für den Betrieb entstehen keine Kosten.</b></li>
+      <li><b>Einsatzort:</b> Hamburg, Lüneburg, Geesthacht, Schwerin, Hagenow und Umgebung</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Kenntnisse</h2>
+    <ul>
+      <li><b>Programmierung:</b> Python (OOP, Schichtenarchitektur nach DDD, Repository-Pattern, Unit-Tests), SQL/SQLite, Bash</li>
+      <li><b>Linux &amp; Automatisierung:</b> Ubuntu und Arch-basierte Systeme im täglichen Einsatz, Ubuntu Autoinstall, cloud-init, Custom-ISOs mit xorriso, Festplattenverschlüsselung mit LUKS</li>
+      <li><b>Windows &amp; Office:</b> sicherer Umgang mit Windows und Microsoft Office</li>
+      <li><b>Künstliche Intelligenz:</b> Prompt Engineering, eigene Claude-Skills für wiederkehrende Aufgaben entwickelt, KI-gestützte Review-Zyklen, lokale Sprachmodelle (Ollama, llama.cpp)</li>
+      <li><b>Virtualisierung &amp; Container:</b> KVM/QEMU; Docker und Kubernetes (Grundlagen)</li>
+      <li><b>Software-Architektur:</b> Client-Server, MVC, Design Patterns, Dependency Inversion</li>
+      <li><b>Werkzeuge &amp; Sprachen:</b> Git/GitHub, Markdown · Deutsch (Muttersprache), Englisch (B2)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Projekte</h2>
+    <div class="block">
+      <p class="zeile"><span>CLI-Würfelspiel mit persistenter Rangliste (Python, SQLite)</span><a href="https://github.com/ITDavid04/Wuerfelspiel-Ansii-Datenbank-umsetzung">Repository auf GitHub</a></p>
+      <ul>
+        <li>Vier getrennte Schichten nach DDD-Schichtmodell (domain, application, infrastructure, interface), die Spiellogik hängt weder von Datenbank noch Oberfläche ab</li>
+        <li>Rangliste über ein SQLite-Repository gespeichert, Speicherlogik mit Unit-Tests abgesichert, farbige Terminal-Ausgabe per ANSI</li>
+      </ul>
+    </div>
+    <div class="block">
+      <p class="zeile"><span>Automatisierte Ubuntu-Bereitstellung (Ubuntu 26.04)</span><a href="https://github.com/ITDavid04/Autoinstall_Ubuntu26.04-Final">github.com/ITDavid04</a></p>
+      <ul>
+        <li>Eigene Installations-ISOs per xorriso skriptbar gebaut, reproduzierbar statt Klickarbeit mit GUI-Tools</li>
+        <li>Vollverschlüsselung der Systeme mit LUKS direkt bei der Installation</li>
+        <li>Post-Install-Skripte machen Schulungsrechner reproduzierbar und ohne manuelle Nacharbeit einsatzbereit</li>
+        <li>Ergebnis: zweitägigen Workshop für IT-Auszubildende konzipiert und durchgeführt</li>
+      </ul>
+    </div>
+    <div class="block">
+      <p class="zeile"><span>Lernwiki FIAE/FISI für den Umschulungskurs</span><a href="https://github.com/ITDavid04/Bibliothek-Lern-Wiki">github.com/ITDavid04</a></p>
+      <ul>
+        <li>Über 20 prüfungsorientierte Artikel zu den Lernfeldern 1 bis 8, u. a. OOP, Client-Server, Storage-Netzwerke, IT-Sicherheit</li>
+        <li>Für die Lerngruppe erstellt und in mehreren KI-gestützten Review-Runden fachlich verbessert</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Aus- und Weiterbildung</h2>
+    <div class="block">
+      <p class="zeile"><span>Umschulung zum Fachinformatiker für Anwendungsentwicklung (IHK)</span><span>09/2025 bis voraussichtlich 08/2027</span></p>
+      <p class="ort">Syntax Institut Hamburg (ehem. Dualis Institut GmbH)</p>
+      <ul><li>Schwerpunkte: Python, SQL und Datenbanken, OOP und Design Patterns, Client-Server-Architektur, UI/UX, IT-Sicherheit, Netzwerke</li></ul>
+    </div>
+    <div class="block">
+      <p class="zeile"><span>Ausbildung zum Gärtner, Fachrichtung Zierpflanzenbau (nicht abgeschlossen)</span><span>09/2000 bis 01/2004</span></p>
+      <p class="ort">Emil-Possehl-Schule, Lübeck</p>
+    </div>
+    <div class="block">
+      <p class="zeile"><span>Mittlere Reife</span><span>07/2000</span></p>
+      <p class="ort">Regionale Schule „Rudolf Tarnow“, Boizenburg/Elbe</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Beruflicher Werdegang</h2>
+    <div class="block">
+      <p class="zeile"><span>Berufliche Neuorientierung und IT-Selbststudium</span><span>07/2023 bis 08/2025</span></p>
+      <ul><li>Eigenständige Einarbeitung in Linux, Shell und Python; bewusste Entscheidung für die Umschulung zum Anwendungsentwickler</li></ul>
+    </div>
+    <div class="block">
+      <p class="zeile"><span>Mitarbeiter im Gartenbau (Festanstellung)</span><span>03/2013 bis 06/2023</span></p>
+      <p class="ort">Gärtnerei Schröder GbR, Mölln, Übernahme nach fast 9 Jahren als Saisonkraft</p>
+      <ul>
+        <li>Kundenberatung und Gestaltung des Verkaufsbereichs: Anliegen verstehen, passende Lösung finden</li>
+        <li>Bedienung und Wartung von Maschinen und Gewächshaustechnik, Fehler systematisch eingegrenzt</li>
+        <li>Eigenverantwortliche Arbeitsorganisation bei saisonalen Pflanzaktionen mit festen Terminen</li>
+      </ul>
+    </div>
+    <div class="block">
+      <p class="zeile"><span>Saisonkraft im Gartenbau</span><span>03/2004 bis 11/2012</span></p>
+      <p class="ort">Gärtnerei Schröder GbR, Mölln</p>
+      <ul><li>Kulturführung, Kommissionierung und Versand; Arbeitsspitzen in Frühjahr und Ernte zuverlässig abgedeckt</li></ul>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Interessen</h2>
+    <p>Linux-Homelab und Virtualisierung · Lokale KI-Modelle (Ollama, llama.cpp) · Strategie- und Teamspiele · Kochen · Garten</p>
+  </section>
+</body>
+</html>

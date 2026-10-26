@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://itdavid04.github.io/Creative_Tech_Lab/sitemap.xml
