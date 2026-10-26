@@ -93,11 +93,83 @@
     w.ax += (naechster(zx, w.ax) - w.ax) * f;
     w.ay += (naechster(zy, w.ay) - w.ay) * f;
   };
-  const zeichneWuerfel = (w, t) => {
-    const hub = ruhig ? 0 : Math.sin(t * 0.9 + w.phase) * w.hub;
-    w.koerper.style.transform = `rotateX(${(w.ax - zeiger.y * 9).toFixed(2)}deg) rotateY(${(w.ay + zeiger.x * 12).toFixed(2)}deg)`;
-    w.schwebe.style.transform = `translate3d(0, ${hub.toFixed(2)}px, 0)`;
+  /* Licht und Schatten: ein Licht von oben links vorn, das Wappen leuchtet magenta dazu.
+     Die Normalen der Seiten kommen aus denselben CSS-Drehungen wie die Würfel, so stimmt das Licht immer. */
+  const norm = v => { const l = Math.hypot(v[0], v[1], v[2]) || 1; return [v[0] / l, v[1] / l, v[2] / l]; };
+  const punkt = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const LICHT = norm([-0.55, -0.85, 1.05]);
+  const HALB = norm([LICHT[0], LICHT[1], LICHT[2] + 1]);
+  const STRAHL = [-LICHT[0], -LICHT[1], -LICHT[2]];
+  const DREHUNG = { vorn: '', hinten: 'rotateY(180deg)', rechts: 'rotateY(90deg)', links: 'rotateY(-90deg)', oben: 'rotateX(90deg)', unten: 'rotateX(-90deg)' };
+  const ECKEN = [];
+  for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) ECKEN.push([x, y, z]);
+  const raum = document.querySelector('.buehne-raum');
+  const schattenGruppe = document.querySelector('.wuerfel-schatten g');
+  const mitte = { x: 0, y: 0 };
+  /* konvexe Hülle (Monotone Chain) der acht projizierten Ecken */
+  const huelle = pkte => {
+    pkte.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const kreuz = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const unten = [], oben = [];
+    for (const p of pkte) { while (unten.length > 1 && kreuz(unten[unten.length - 2], unten[unten.length - 1], p) <= 0) unten.pop(); unten.push(p); }
+    for (let i = pkte.length - 1; i >= 0; i--) { const p = pkte[i]; while (oben.length > 1 && kreuz(oben[oben.length - 2], oben[oben.length - 1], p) <= 0) oben.pop(); oben.push(p); }
+    return unten.slice(0, -1).concat(oben.slice(0, -1));
   };
+  const vermessen = () => {
+    mitte.x = raum.clientWidth / 2; mitte.y = raum.clientHeight / 2;
+    wuerfel.forEach(w => { w.s = w.el.offsetWidth; w.cx = w.el.offsetLeft + w.s / 2; w.cy = w.el.offsetTop + w.s / 2; });
+  };
+
+  function zeichneWuerfel(w, t) {
+    const rx = w.ax - zeiger.y * 9, ry = w.ay + zeiger.x * 12;
+    const hubY = ruhig ? 0 : Math.sin(t * 0.9 + w.phase) * w.hub;
+    const hubZ = ruhig ? 0 : Math.sin(t * 0.63 + w.phase * 1.7) * w.hub * 1.8;
+    w.koerper.style.transform = `rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
+    w.schwebe.style.transform = `translate3d(0, ${hubY.toFixed(2)}px, ${hubZ.toFixed(2)}px)`;
+    if (!w.seiten || !w.s) return;
+    const m = new DOMMatrix().rotateAxisAngleSelf(1, 0, 0, rx).rotateAxisAngleSelf(0, 1, 0, ry);
+
+    /* Licht je sichtbarer Seite */
+    const zumWappen = norm([mitte.x - w.cx, mitte.y - w.cy - hubY, -w.s * 0.35]);
+    for (const f of w.seiten) {
+      const q = m.transformPoint(new DOMPoint(f.normal[0], f.normal[1], f.normal[2], 0));
+      const n = [q.x, q.y, q.z];
+      if (n[2] < 0.02) continue;
+      const diffus = Math.max(0, punkt(n, LICHT));
+      const glanz = Math.pow(Math.max(0, punkt(n, HALB)), 22);
+      const rim = Math.max(0, punkt(n, zumWappen));
+      const band = 50 + (n[2] * n[0] + n[2] * n[1]) * 80;
+      const st = f.el.style;
+      st.setProperty('--dunkel', Math.min(0.6, Math.max(0, 0.6 - diffus * 0.72)).toFixed(3));
+      st.setProperty('--glanz', (0.12 + glanz * 0.85).toFixed(3));
+      st.setProperty('--spot', Math.pow(glanz, 2.2).toFixed(3));
+      st.setProperty('--band', band.toFixed(1) + '%');
+      st.setProperty('--rim', (rim * 0.75).toFixed(3));
+    }
+
+    /* Schatten: Ecken entlang der Lichtstrahlen auf die Wand hinter den Würfeln projizieren */
+    if (!w.schatten) return;
+    const abstand = w.s * 0.8 + hubZ;
+    const pkte = ECKEN.map(e => {
+      const q = m.transformPoint(new DOMPoint(e[0] * w.s / 2, e[1] * w.s / 2, e[2] * w.s / 2, 1));
+      const k = (abstand + q.z) / -STRAHL[2];
+      return [w.cx + q.x + k * STRAHL[0], w.cy + hubY + q.y + k * STRAHL[1]];
+    });
+    w.schatten.setAttribute('points', huelle(pkte).map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' '));
+    w.schatten.style.opacity = Math.max(0.4, 0.88 - abstand / (w.s * 3)).toFixed(3);
+  }
+
+  if (raum && typeof DOMMatrix === 'function') {
+    wuerfel.forEach(w => {
+      w.seiten = Object.keys(DREHUNG).map(n => {
+        const p = (DREHUNG[n] ? new DOMMatrix(DREHUNG[n]) : new DOMMatrix()).transformPoint(new DOMPoint(0, 0, 1, 0));
+        return { el: w.koerper.querySelector('.seite.' + n), normal: [p.x, p.y, p.z] };
+      }).filter(f => f.el);
+      if (schattenGruppe) w.schatten = schattenGruppe.appendChild(document.createElementNS(NS, 'polygon'));
+    });
+    vermessen();
+    new ResizeObserver(() => { vermessen(); wuerfel.forEach(w => zeichneWuerfel(w, performance.now() / 1000)); }).observe(raum);
+  }
   function wuerfelUpdate(dt, t) {
     zeiger.x += (zeiger.zx - zeiger.x) * (1 - Math.exp(-dt * 5));
     zeiger.y += (zeiger.zy - zeiger.y) * (1 - Math.exp(-dt * 5));

@@ -24,7 +24,7 @@ Nachtschicht ist der Standard, die Tagschicht lässt sich umschalten. Bei „Bew
 | `projekt/Spezifikation.md` | Ziel, Abschnitte, Gestaltungsentscheidungen und Prüfbericht |
 | `tools/lebenslauf-pdf.mjs` | Baut `docs/lebenslauf.pdf` mit Chrome |
 
-Kein Framework, kein Build-Schritt: HTML, CSS und ein Skript ohne Bibliotheken. Die Würfel sind reines CSS-3D, die Ranke ein SVG, das beim Laden aus den Positionen der Befehle entsteht. Ohne JavaScript ist trotzdem alles lesbar. Schrift: Ubuntu und Ubuntu Mono, lokal eingebunden.
+Kein Framework, kein Build-Schritt: HTML, CSS und ein Skript ohne Bibliotheken. Die Würfel sind reines CSS-3D mit berechnetem Licht, Metallglanz und Schatten aus ihren echten Ecken, die Ranke ein SVG, das beim Laden aus den Positionen der Befehle entsteht. Ohne JavaScript ist trotzdem alles lesbar. Schrift: Ubuntu und Ubuntu Mono, lokal eingebunden.
 
 ## Ansehen und ändern
 
