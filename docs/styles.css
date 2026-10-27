@@ -461,3 +461,34 @@ figure { margin: 0; }
   .w-pruegler { --x: 76%; }
   .w-jarvis { --x: 85%; }
 }
+
+/* Ampel: Unter jedem fertig getippten Befehl läuft einmal ein Balken von links nach rechts,
+   Rot, Gelb, Grün wie die Prüfungs-Ampel der Wiki-APP, dann blendet er aus */
+.befehl { position: relative; }
+.ampel { position: absolute; left: 0; right: 0; bottom: -7px; height: 3px; border-radius: 3px; pointer-events: none; transform-origin: 0 50%; transform: scaleX(0); opacity: 0; }
+.ampel.laeuft { animation: ampel 1.7s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+@keyframes ampel {
+  0% { transform: scaleX(0); opacity: 1; background: #ff5a4e; box-shadow: 0 0 10px rgba(255, 90, 78, 0.8); }
+  22% { background: #ff5a4e; box-shadow: 0 0 10px rgba(255, 90, 78, 0.8); }
+  38% { background: #ffd447; box-shadow: 0 0 10px rgba(255, 212, 71, 0.8); }
+  55% { transform: scaleX(1); opacity: 1; background: #83d97d; box-shadow: 0 0 12px rgba(131, 217, 125, 0.85); }
+  75% { transform: scaleX(1); opacity: 1; background: #83d97d; box-shadow: 0 0 12px rgba(131, 217, 125, 0.85); }
+  100% { transform: scaleX(1); opacity: 0; background: #83d97d; box-shadow: 0 0 0 transparent; }
+}
+
+/* Werbespot der Wiki-APP: am Desktop in der Lücke unter dem Screenshot, am Handy nur als Link */
+.beleg-spalte { display: grid; gap: 1.75rem; align-content: start; }
+@media (min-width: 980px) { .protokoll-inhalt > .beleg-spalte { order: 2; } }
+.spot { display: none; }
+.spot-link { margin: 0; font-weight: 700; }
+@media (min-width: 980px) {
+  .spot { display: block; justify-self: center; width: min(100%, 300px); }
+  .spot-link { display: none; }
+}
+.spot-rahmen { position: relative; background: #120a26; border-radius: 26px; padding: 8px; box-shadow: 0 0 0 2px var(--beige), 0 18px 40px rgba(6, 2, 20, 0.45), 0 0 50px rgba(131, 217, 125, 0.18); }
+.spot-video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 18px; background: #0b1f16; }
+.spot-knoepfe { position: absolute; left: 16px; right: 16px; bottom: 16px; display: flex; gap: 0.5rem; justify-content: space-between; }
+.spot-knoepfe[hidden] { display: none; }
+.spot-knoepfe button { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.35); background: rgba(10, 4, 24, 0.72); color: #fff; font-family: var(--mono); font-size: 0.95rem; cursor: pointer; backdrop-filter: blur(6px); }
+.spot-knoepfe button:hover { border-color: var(--term-gruen); color: var(--term-gruen); }
+.spot-knoepfe svg { width: 14px; height: 14px; flex: none; }
