@@ -499,17 +499,16 @@
     });
   }
 
-  /* ---------- Werbespot ---------- */
-  const spot = document.querySelector('.spot-video');
-  if (spot) {
-    const knoepfe = document.querySelector('.spot-knoepfe');
+  /* ---------- Werbespots ---------- */
+  const ICON = {
+    pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>',
+    start: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>',
+    stumm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>',
+    laut: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9a4.5 4.5 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>'
+  };
+  document.querySelectorAll('.spot').forEach(figur => {
+    const spot = figur.querySelector('.spot-video'), knoepfe = figur.querySelector('.spot-knoepfe');
     const pause = knoepfe.querySelector('.spot-pause'), ton = knoepfe.querySelector('.spot-ton');
-    const ICON = {
-      pause: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>',
-      start: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>',
-      stumm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>',
-      laut: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor"/><path d="M16 9a4.5 4.5 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/></svg>'
-    };
     spot.removeAttribute('controls');
     knoepfe.hidden = false;
     /* Läuft von selbst, solange er zu sehen ist; bei reduzierter Bewegung erst auf Knopfdruck */
@@ -532,7 +531,7 @@
     });
     ['play', 'pause', 'volumechange'].forEach(ev => spot.addEventListener(ev, beschriften));
     beschriften();
-  }
+  });
 
   /* ---------- Takt ---------- */
   if (!ruhig) {

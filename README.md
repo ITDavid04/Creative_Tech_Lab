@@ -9,7 +9,7 @@ Mein Portfolio als Labor bei Nacht, in den Farben meines Profilbilds: Jeder Absc
 | Abschnitt | Inhalt |
 |---|---|
 | Einstieg | `whoami`: wer ich bin, was ich suche (Praktikum ab 11/2026), Kontakt und Lebenslauf, daneben die Würfel-Bühne |
-| Versuchsprotokolle | Wiki-APP, Prüfungsprügler, Jarvis, Claude Skills, Ubuntu Autoinstall, mit echten Screenshots, Code-Auszügen, dem Werbespot der Wiki-APP und einer Hörprobe von Jarvis |
+| Versuchsprotokolle | Wiki-APP, Prüfungsprügler, Jarvis, Claude Skills, Ubuntu Autoinstall, mit echten Screenshots, Code-Auszügen, den Werbespots der Wiki-APP und des Prüfungsprüglers und einer Hörprobe von Jarvis |
 | Werkzeugkasten | Jede Technik mit dem Projekt, in dem ich sie eingesetzt habe |
 | Über mich und Werdegang | Vom Gewächshaus ins Labor |
 
@@ -19,7 +19,7 @@ Nachtschicht ist der Standard, die Tagschicht lässt sich umschalten. Bei „Bew
 
 | Ordner | Inhalt |
 |---|---|
-| `docs/` | Die fertige Seite für GitHub Pages: `index.html`, `styles.css`, `lab.js` (Befehle, Würfel, Ranke, Bienen, Hörprobe), `datenschutz.html`, Schriften, Bilder, Hörprobe, Werbespot (`video/wiki-spot.mp4`), `lebenslauf.pdf` |
+| `docs/` | Die fertige Seite für GitHub Pages: `index.html`, `styles.css`, `lab.js` (Befehle, Würfel, Ranke, Bienen, Hörprobe), `datenschutz.html`, Schriften, Bilder, Hörprobe, Werbespots (`video/`), `lebenslauf.pdf` |
 | `projekt/lebenslauf/` | Quelle der Web-Fassung des Lebenslaufs (ohne Straße, Telefon, E-Mail und Geburtsdatum) |
 | `projekt/Spezifikation.md` | Ziel, Abschnitte, Gestaltungsentscheidungen und Prüfbericht |
 | `tools/lebenslauf-pdf.mjs` | Baut `docs/lebenslauf.pdf` mit Chrome |
