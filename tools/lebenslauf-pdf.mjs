@@ -8,7 +8,7 @@ const wurzel = join(dirname(fileURLToPath(import.meta.url)), '..');
 const quelle = pathToFileURL(join(wurzel, 'projekt/lebenslauf/lebenslauf.html')).href;
 const ziel = join(wurzel, 'docs/lebenslauf.pdf');
 
-const browser = await puppeteer.launch({ executablePath: process.env.CHROME || '/usr/bin/google-chrome', headless: 'new' });
+const browser = await puppeteer.launch({ executablePath: process.env.CHROME || '/usr/bin/google-chrome', headless: 'new', args: process.getuid?.() === 0 ? ['--no-sandbox'] : [] });
 const seite = await browser.newPage();
 await seite.goto(quelle, { waitUntil: 'networkidle0' });
 await seite.pdf({ path: ziel, format: 'A4', printBackground: true, preferCSSPageSize: true, tagged: true, outline: false });

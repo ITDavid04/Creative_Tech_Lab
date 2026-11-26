@@ -390,6 +390,7 @@ figure { margin: 0; }
 .gitlog .zeile { font-family: var(--mono); font-size: 1.02rem; color: var(--tinte-2); margin: 0; display: flex; flex-wrap: wrap; gap: 0.2rem 0.6rem; }
 .gitlog .ref { color: var(--orange); font-weight: 700; }
 .gitlog .ref.head { color: var(--tuerkis); }
+.gitlog .merge { color: var(--ranke); }
 .gitlog h3 { font-size: 1.25rem; margin: 0.2rem 0 0.25rem; }
 .gitlog .wo { margin: 0 0 0.4rem; color: var(--tinte-2); }
 .gitlog p:last-child { margin-bottom: 0; }
@@ -448,7 +449,7 @@ figure { margin: 0; }
 }
 
 @media print {
-  body::before, .kopf, .schicht, .sprung, .ranke, .buehne, .wuerfeln-zeile { display: none !important; }
+  body::before, .kopf, .schicht, .sprung, .ranke, .buehne, .wuerfeln-zeile, .kd { display: none !important; }
   body { background: #fff; color: #000; }
 }
 
@@ -494,3 +495,74 @@ figure { margin: 0; }
 .spot-knoepfe button { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; padding: 0.35rem 0.8rem; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.35); background: rgba(10, 4, 24, 0.72); color: #fff; font-family: var(--mono); font-size: 0.95rem; cursor: pointer; backdrop-filter: blur(6px); }
 .spot-knoepfe button:hover { border-color: var(--term-gruen); color: var(--term-gruen); }
 .spot-knoepfe svg { width: 14px; height: 14px; flex: none; }
+
+/* Klaus-Dieter Pollenberg, Gast aus der Wiki-APP: sitzt unten rechts, führt durchs Labor und beantwortet Fragen.
+   Bilder aus seinem 3D-Modell, bewegt wird er nur hier. Bei "Bewegung reduzieren" greift die Regel oben: alles steht. */
+.kd { position: fixed; right: max(12px, env(safe-area-inset-right)); bottom: max(12px, env(safe-area-inset-bottom)); z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; pointer-events: none; }
+.kd[hidden] { display: none; }
+.kd > * { pointer-events: auto; }
+.kd-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.kd-figur { position: relative; width: 150px; height: 131px; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 50%; }
+/* Heller Schein hinter ihm, damit die dunkelblauen Beinchen nachts nicht im Grund verschwinden */
+.kd-figur::before { content: ""; position: absolute; left: 22%; right: 22%; top: 16%; bottom: 0; border-radius: 50%; background: radial-gradient(closest-side, rgba(185, 163, 255, 0.34), rgba(185, 163, 255, 0.12) 60%, transparent); pointer-events: none; }
+:root[data-theme="light"] .kd-figur::before { background: radial-gradient(closest-side, rgba(91, 61, 148, 0.14), transparent); }
+.kd-figur img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 8px 12px rgba(6, 2, 20, 0.4)); }
+.kd-figur:hover img { filter: drop-shadow(0 8px 12px rgba(6, 2, 20, 0.4)) drop-shadow(0 0 14px rgba(131, 217, 125, 0.45)); }
+.kd-schwebe { display: block; width: 100%; height: 100%; animation: kd-schweben 2.8s ease-in-out infinite; }
+@keyframes kd-schweben { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-6px) rotate(1.5deg); } }
+/* Anflug von rechts oben, im Bogen, dann sanft aufsetzen */
+.kd.anflug .kd-figur { animation: kd-anflug 1.3s cubic-bezier(0.25, 0.8, 0.3, 1) both; }
+@keyframes kd-anflug {
+  0% { transform: translate(160px, -55vh) rotate(-8deg); opacity: 0; }
+  15% { opacity: 1; }
+  65% { transform: translate(-26px, -24px) rotate(-6deg); }
+  85% { transform: translate(4px, 4px) rotate(2deg); }
+  100% { transform: none; opacity: 1; }
+}
+/* Während die Seite unter ihm scrollt, fliegt er eine kleine Schleife mit */
+.kd.fliegt .kd-schwebe { animation: kd-schleife 0.9s ease-in-out; }
+@keyframes kd-schleife { 0% { transform: none; } 35% { transform: translate(-34px, -30px) rotate(-8deg); } 70% { transform: translate(-12px, -10px) rotate(-3deg); } 100% { transform: none; } }
+.kd.spricht .kd-figur img { animation: kd-nicken 0.5s ease-in-out 2; }
+@keyframes kd-nicken { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-4deg) translateY(-2px); } 70% { transform: rotate(3deg); } }
+.kd.weg .kd-figur { transition: transform 0.45s ease-in, opacity 0.45s ease-in; transform: translate(140px, -40vh) rotate(10deg); opacity: 0; }
+
+.kd-blase { position: relative; width: min(370px, calc(100vw - 76px)); max-height: min(70vh, 560px); display: flex; flex-direction: column; background: var(--term); color: var(--term-tinte); border: 1px solid var(--term-rand); border-radius: 18px 18px 6px 18px; box-shadow: var(--schatten), 0 0 40px rgba(131, 217, 125, 0.12); margin-right: 40px; animation: kd-blase 0.25s ease-out; }
+.kd-blase[hidden] { display: none; }
+@keyframes kd-blase { from { opacity: 0; transform: translateY(8px) scale(0.97); } to { opacity: 1; transform: none; } }
+.kd-blase::after { content: ""; position: absolute; right: -9px; bottom: 14px; width: 16px; height: 16px; background: var(--term); border-right: 1px solid var(--term-rand); border-bottom: 1px solid var(--term-rand); transform: rotate(-45deg); }
+.kd-kopf { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.45rem 0.5rem 0.45rem 1rem; border-bottom: 1px solid var(--term-rand); background: rgba(255, 255, 255, 0.04); border-radius: 18px 18px 0 0; }
+.kd-name { margin: 0; font-family: var(--mono); font-size: 0.95rem; color: var(--term-tinte-2); }
+.kd-name b { color: var(--term-tinte); }
+.kd-name span::before { content: "· "; }
+.kd-zu { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 10px; background: none; color: var(--term-tinte-2); cursor: pointer; }
+.kd-zu:hover { color: var(--term-tinte); background: rgba(255, 255, 255, 0.08); }
+.kd-zu svg { width: 18px; height: 18px; }
+.kd-verlauf { padding: 0.9rem 1rem 0.2rem; overflow-y: auto; font-size: 1rem; line-height: 1.5; }
+.kd-verlauf p { margin: 0 0 0.7rem; }
+.kd-verlauf a { color: var(--term-gruen); }
+.kd-verlauf code { color: var(--term-prompt); }
+.kd-du { margin-left: 2.5rem !important; padding: 0.45rem 0.75rem; border-radius: 12px 12px 4px 12px; background: rgba(185, 163, 255, 0.14); color: var(--term-tinte); font-family: var(--mono); font-size: 0.95rem; overflow-wrap: anywhere; }
+.kd-du::before { content: ">_ "; color: var(--term-prompt); }
+.kd-wahl { display: flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.1rem 1rem 0.8rem; }
+.kd-wahl:empty { display: none; }
+.kd-knopf { display: inline-flex; align-items: center; min-height: 40px; padding: 0.3rem 0.85rem; border-radius: 999px; border: 1px solid rgba(131, 217, 125, 0.55); background: transparent; color: var(--term-gruen); font: inherit; font-size: 0.93rem; text-decoration: none; cursor: pointer; }
+.kd-knopf:hover { background: rgba(131, 217, 125, 0.12); color: var(--term-gruen); }
+.kd-haupt { background: var(--term-gruen); border-color: var(--term-gruen); color: #10291a; font-weight: 700; }
+.kd-haupt:hover { background: #a9eba1; color: #10291a; }
+.kd-frage { display: flex; gap: 0.4rem; padding: 0 1rem 0.8rem; }
+.kd-frage[hidden] { display: none; }
+.kd-frage input { flex: 1; min-width: 0; min-height: 44px; padding: 0.4rem 0.75rem; border-radius: 12px; border: 1px solid var(--term-rand); background: rgba(255, 255, 255, 0.06); color: var(--term-tinte); font: inherit; font-size: 1rem; }
+.kd-frage input::placeholder { color: var(--term-tinte-2); opacity: 0.8; }
+.kd-frage input:focus-visible { outline: 2px solid var(--term-prompt); outline-offset: 1px; }
+.kd-frage button { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; border: 0; background: var(--term-gruen); color: #10291a; cursor: pointer; }
+.kd-frage button svg { width: 20px; height: 20px; }
+.kd-fuss { margin: 0; padding: 0 1rem 0.7rem; text-align: right; }
+.kd-weg, .kd-rufen { padding: 0.2rem 0; border: 0; background: none; color: var(--term-tinte-2); font: inherit; font-size: 0.85rem; text-decoration: underline; text-underline-offset: 0.18em; cursor: pointer; }
+.kd-weg:hover { color: var(--term-tinte); }
+.kd-rufen { color: var(--ranke); font-size: inherit; }
+@media (max-width: 719px) {
+  .kd-figur { width: 104px; height: 91px; }
+  .kd-blase { width: calc(100vw - 52px); margin-right: 28px; max-height: 60vh; }
+  .kd-verlauf { font-size: 0.97rem; }
+}
