@@ -495,7 +495,7 @@
     audio.addEventListener('ended', () => { zuruecksetzen(); audio.currentTime = 0; balken.forEach(b => b.classList.remove('an')); });
     knopf.addEventListener('click', () => {
       if (!audio.paused) { audio.pause(); return; }
-      audio.play().catch(() => { beschriftung.textContent = 'Ihr Browser kann die Hörprobe leider nicht abspielen'; });
+      audio.play().catch(() => { beschriftung.textContent = 'Dein Browser kann die Hörprobe leider nicht abspielen'; });
     });
   }
 
